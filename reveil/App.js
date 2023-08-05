@@ -5,18 +5,16 @@ import RNDateTimePicker from '@react-native-community/datetimepicker';
 
 export default function App() {
 
-  const [text, setText] = useState('Grayou')
-  const [date, setDate] = useState(new Date(Date.now()))
-
+  const [dateTime, setDateTime] = useState(new Date(Date.now()))
+  
+// (newDateTime) => {setDateTime(newDateTime)}
   return (
     <>
       <View style={styles.container}>
-        <Text> Hello </Text>
-        <TextInput value={text} onChangeText={setText}/>
-        <RNDateTimePicker value={date} />
+        <Text> {dateTime.toString()} </Text>
+        <RNDateTimePicker value={dateTime} mode="datetime" onChange={(event, newDateTime) => {setDateTime(newDateTime)}}/>
         <StatusBar style="auto" />
       </View>
-      <Text> {text} </Text>
     </>
   );
 }
